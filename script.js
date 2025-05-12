@@ -1,4 +1,6 @@
+console.log("script.js file has been loaded and is running!");
 document.addEventListener('DOMContentLoaded', () => {
+    console.log("DOMContentLoaded event fired!");
     // Variables
     const productListDiv = document.getElementById('product-list');
     const cartItemsDiv = document.getElementById('cart-items');
@@ -176,9 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     
                     console.warn(`Product with ID ${item.productId} not found for cart item.`);
-                     // Optionally remove this orphaned item from cart automatically
-                    // cart = cart.filter(cartItem => cartItem.productId !== item.productId);
-                    // saveCartToStorage();
+                     
                 }
             });
         }
@@ -209,10 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function applyCoupon() {
         const code = couponInput.value.trim(); // Trim whitespace
 
-        // Basic Regex Validation (Example: Alphanumeric, could be more specific)
-        // const couponRegex = /^[a-zA-Z0-9]+$/;
-        // For the specific code WEB3BRIDGECOHORTx, a direct check is better
-        // but we can add a format check if needed. Let's focus on the exact code.
+       
 
         if (cart.length === 0) {
              showMessage('Cannot apply coupon to an empty cart.', 'error');
@@ -233,10 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
              showMessage('Please enter a coupon code.', 'error');
         }
          else {
-            // Handle invalid coupon code
-            // Even if a valid coupon was previously applied, trying an invalid one
-            // shouldn't remove the valid one unless explicitly designed to do so.
-            // Here, we just show an error for the *attempted* code.
+            
             showMessage(`Invalid coupon code: "${code}".`, 'error');
             couponInput.value = ''; // Clear the invalid code
         }
@@ -373,9 +367,7 @@ document.addEventListener('DOMContentLoaded', () => {
     checkoutButton.addEventListener('click', () => {
         if(cart.length > 0) {
              alert(`Proceeding to checkout with ${cart.length} item(s)! Total: $${totalSpan.textContent}\n(This is a mock action - a real checkout page would load here)`);
-             // In a real app, you would redirect to a checkout page:
-             // window.location.href = '/checkout.html';
-             // You might pass cart data via localStorage or query params.
+             
         } else {
              showMessage('Cannot checkout with an empty cart.', 'error');
         }
